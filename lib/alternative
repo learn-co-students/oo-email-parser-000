@@ -1,0 +1,27 @@
+alternative
+
+
+require "pry"
+
+class EmailParser
+
+	def initialize(string)
+		@string = string
+	end
+
+	def parse
+		email_array = @string.split(", ")
+		email_array.each do |email|
+			if email.match(/\s/)
+				fix = email.split
+				fix.each do |x|
+					email_array<<x
+				end
+				email_array.delete(email)
+			end
+		end
+		email_array.uniq
+		#binding.pry
+	end
+
+end
